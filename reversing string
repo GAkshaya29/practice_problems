@@ -1,0 +1,11 @@
+s=input()
+s=s.strip()#for removing spaces in front and back
+s=s.split(" ")[::-1]
+#print(*s) for converting string into list
+#or
+#print(" ".join(s))
+result=[]
+for char in s:
+    if(len(char)!=0):
+        result.append(char)
+print(" ".join(result))
