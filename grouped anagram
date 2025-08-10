@@ -1,0 +1,17 @@
+#Input: strs = ["eat","tea","tan","ate","nat","bat"]
+#Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+#grouping the given words based on the anagram
+
+def group_anagrams(strs):
+    from collections import defaultdict
+    d = defaultdict(list)
+    for word in strs:
+        sort_word = "".join(sorted(word))
+        d[sort_word].append(word)
+    return list(d.values())
+
+input_str = input("")
+strs = input_str.strip().split()
+
+result = group_anagrams(strs)
+print(result)
