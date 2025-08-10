@@ -1,0 +1,7 @@
+# a word, phrase, or name formed by rearranging the letters of another, such as spar, formed from rasp.
+s=(input())
+t=(input())
+if (sorted(t)==sorted(s)): #aprs==aprs
+    print(True)
+else:
+    print(False)
