@@ -1,0 +1,66 @@
+AdjMatrix creation ;- 
+v = 5  
+e = 7 
+edges = [[0,1], [0,4], [4,1], [4,3], [1,3], [1,2], [3,2]]
+adjMatrix = [] 
+for i in range(v):
+    lst = [0]*v 
+    adjMatrix.append(lst) 
+for n,m in edges:
+    adjMatrix[n][m]=1 
+    adjMatrix[m][n]=1 
+print(adjMatrix)
+--------------------------------------------------------------------------------------
+AdjList Creation :- 
+from typing import List
+class Solution:
+    def printGraph(self, V : int, edges : List[List[int]]) -> List[List[int]]:
+        # code here
+        adjList = [] 
+        for i in range(V):
+            adjList.append([]) 
+        for n,m in edges:
+            adjList[n].append(m) 
+            adjList[m].append(n) 
+        return adjList 
+-------------------------------------------------------------------------------------------------------
+BFS IN GRAPH :- 
+class Solution:
+    # Function to return Breadth First Search Traversal of given graph.
+    def bfs(self, adj):
+        # code here
+        startNode = 0 
+        v = len(adj) # no of nodes 
+        visited = [0]*v 
+        q=[] 
+        ans = [] 
+        if(visited[startNode]==0):
+            visited[startNode]=1 
+            q.append(startNode) 
+            while(len(q)>0):
+                node = q.pop(0)
+                ans.append(node)
+                for val in adj[node]:
+                    if(visited[val]==0):
+                        visited[val]=1 
+                        q.append(val) 
+            return ans 
+-------------------------------------------------------------------------------------------------------------------------
+class Solution:
+    def depthFirstSearch(self,startNode,visited,ans,adj):
+        ans.append(startNode) 
+        for val in adj[startNode]:
+            if(visited[val]==0):
+                visited[val]=1 
+                self.depthFirstSearch(val,visited,ans,adj)
+    #Function to return a list containing the DFS traversal of the graph.
+    def dfs(self, adj):
+        # code here
+        v = len(adj) 
+        visited = [0]*v 
+        ans = [] 
+        startNode = 0 
+        if(visited[startNode]==0):
+            visited[startNode]=1 
+            self.depthFirstSearch(startNode,visited,ans,adj) 
+        return ans 
