@@ -19,4 +19,5 @@ while(len(q)>0):
             q.append(node.right)
         level.append(node.data)
     ans.append(level)
+
 print(ans)
