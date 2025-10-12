@@ -1,0 +1,29 @@
+#NUMBER OF ENCLAVES
+grid=(list(map(int,input().split())))
+from collections import deque
+n=len(grid)
+m=len(grid[0])
+vis=[]
+for i in range(n):
+    lst=[0]*m
+    vis.append(lst)
+q=deque()    
+for i in range(n):
+    for j in range(m):
+        if((i==0 or j==0 or i==n-1 or j==m-1)and grid[i][j]==1):
+            q.append((i,j))
+            vis[i][j]=1 
+while(len(q)>0):
+    row,col=q.popleft()
+    for r,c in [[-1,0],[1,0],[0,-1],[0,1]]:
+        ur=r+row
+        uc=c+col
+        if(ur>= and ur<n and uc>=0 and uc<m and grid[ur][uc]==1 and vis[ur][uc]==0 ):
+            vis[ur][uc]=1
+            q.append((ur,uc))
+count=0 #number of enclaves formed
+for i in range(n):
+    for j in range(m):
+        if(grid[i][j]==1 and vis[i][j]==0):
+            count+=1
+print count
